@@ -29,8 +29,6 @@ const reducer = (state, action) => {
     }
     case CHANGE_TOPPING: {
       const {name, checked} = action.payload
-      console.log(name, checked)
-      
       return {...state, [name]: checked}
     }
 
