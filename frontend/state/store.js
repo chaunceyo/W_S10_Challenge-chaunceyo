@@ -3,7 +3,7 @@ import { orderApi } from './orderApi'
 import filterReducer from './filterSlice'
 
 
-export const store = configureStore({
+export const resetStore = () => configureStore({
   reducer: {
     filters: filterReducer,
     [orderApi.reducerPath] : orderApi.reducer,
@@ -14,3 +14,4 @@ export const store = configureStore({
 })
 
 
+export const store = resetStore()
