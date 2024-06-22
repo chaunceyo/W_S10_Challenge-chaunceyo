@@ -1,18 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { orderApi } from './orderApi'
+import filterReducer from './filterSlice'
 
-const exampleReducer = (state = { count: 0 }) => {
-  return state
-}
 
-export const resetStore = () => configureStore({
+export const store = configureStore({
   reducer: {
-    example: exampleReducer,
-    // add your reducer(s) here
+    filters: filterReducer,
+    [orderApi.reducerPath] : orderApi.reducer,
   },
   middleware: getDefault => getDefault().concat(
-    // if using RTK Query for your networking: add your middleware here
-    // if using Redux Thunk for your networking: you can ignore this
+    orderApi.middleware,
   ),
 })
 
-export const store = resetStore()
+
