@@ -9,6 +9,7 @@ export const filters = createSlice({
     reducers: {
         selectFiltered(state, action) {
             //console.log(action.payload)
+            
             state.size = action.payload
         },
     }

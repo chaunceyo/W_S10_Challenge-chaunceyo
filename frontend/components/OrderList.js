@@ -12,18 +12,39 @@ export default function OrderList() {
       <h2>Pizza Orders</h2>
       <ol>
         {
+          currentSize === 'All'?
           orders?.map((order) => {
             return (
               <li key={order.id}>
                 <div>
                   {order.customer} ordered a size {order.size} with 
                     {
-                     order.toppings?.map((topping, idx) => {
+                     order.toppings?
+                     order.toppings.map((topping, idx) => {
                       if( idx === order.toppings.length - 1){
                         return ` ${idx + 1} ${idx + 1 > 1? 'toppings' : 'topping'}`
-                       }
                       }
-                    )
+                    }
+                    ): ' no toppings'
+                    } 
+                </div>
+              </li>
+            )
+          }) : 
+          orders?.map((order) => {
+            if(order.size === currentSize)
+            return (
+              <li key={order.id}>
+                <div>
+                  {order.customer} ordered a size {order.size} with 
+                    {
+                     order.toppings?
+                     order.toppings.map((topping, idx) => {
+                      if( idx === order.toppings.length - 1){
+                        return ` ${idx + 1} ${idx + 1 > 1? 'toppings' : 'topping'}`
+                      }
+                    }
+                    ): ' no toppings'
                     } 
                 </div>
               </li>
